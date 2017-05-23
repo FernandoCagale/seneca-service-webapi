@@ -5,7 +5,7 @@ exports.register = (server, options, next) => {
   server.route([
     {
       method: 'GET',
-      path: '/admin/user',
+      path: '/admin/user/{id}',
       config: {
         description: 'GET user',
         notes: 'Return based on token',
@@ -24,9 +24,7 @@ exports.register = (server, options, next) => {
         description: 'POST user',
         notes: 'Save a user',
         tags: ['api', 'admin'],
-        auth: {
-          scope: ['admin']
-        },
+        auth: false,
         handler: Controller.create,
         validate: Validator.create()
       }
@@ -47,7 +45,7 @@ exports.register = (server, options, next) => {
     },
     {
       method: 'PUT',
-      path: '/admin/user',
+      path: '/admin/user/{id}',
       config: {
         description: 'PUT user',
         notes: 'Update based on token',

@@ -2,13 +2,12 @@ import Joi from 'joi';
 
 const schema = {
   id: Joi
-    .number()
-    .integer()
-    .min(0),
+    .string(),
   name: Joi
     .string()
     .max(120)
-    .trim(),
+    .trim()
+    .allow(''),
   email: Joi
     .string()
     .email(),
@@ -18,6 +17,7 @@ const schema = {
     .max(60)
     .trim()
     .regex(/(?=[\s\S]*[a-z][\s\S]*)(?=[\s\S]*[0-9][\s\S]*)/i, 'strong password')
+    .allow('')
 };
 
 export function getSchema () {

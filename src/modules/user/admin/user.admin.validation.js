@@ -3,7 +3,13 @@ import * as Schema from '../user.schema';
 const schema = Schema.getSchema();
 
 export function read () {
-  return {};
+  return {
+    params: {
+      id: schema
+        .id
+        .required()
+    }
+  };
 }
 
 export function logout () {
@@ -41,10 +47,15 @@ export function create () {
 
 export function update () {
   return {
+    params: {
+      id: schema
+        .id
+        .required()
+    },
     payload: {
       name: schema
         .name
-        .required(),
+        .optional(),
       email: schema
         .email
         .required(),
