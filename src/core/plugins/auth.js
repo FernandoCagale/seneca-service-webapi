@@ -25,19 +25,10 @@ exports.register = (server, options, next) => {
 
   function validate (decoded, request, cb) {
     const token = request.headers.authorization.replace('Bearer ', '');
+    const pattern = {role: 'auth', cmd: 'getToken', token: token};
 
-    jsonWebToken.verify(token, key, (err, decoded) => {
-      if (err) {
-        return cb(null, false);
-      }
-      return cb(null, true);
-    });
-
-    /*
-    client.get(token, (err, res) => {
-      if (err || !res) {
-        return cb(null, false);
-      }
+    return request.seneca.act(pattern, (err, response) => {
+      if (err || !response.ok) return cb(null, false);
       jsonWebToken.verify(token, key, (err, decoded) => {
         if (err) {
           return cb(null, false);
@@ -45,7 +36,6 @@ exports.register = (server, options, next) => {
         return cb(null, true);
       });
     });
-    */
   }
 };
 
