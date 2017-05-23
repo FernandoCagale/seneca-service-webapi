@@ -4,20 +4,6 @@ import * as Validator from './order.admin.validation';
 exports.register = (server, options, next) => {
   server.route([
     {
-      method: 'GET',
-      path: '/admin/order',
-      config: {
-        description: 'GET order',
-        notes: 'GET order',
-        tags: ['api', 'admin'],
-        auth: {
-          scope: ['admin']
-        },
-        handler: Controller.list,
-        validate: Validator.list()
-      }
-    },
-    {
       method: 'DELETE',
       path: '/admin/order/{id}',
       config: {

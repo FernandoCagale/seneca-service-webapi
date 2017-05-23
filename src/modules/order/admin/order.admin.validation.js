@@ -48,7 +48,3 @@ export function update () {
     }
   };
 }
-
-export function list () {
-  return {};
-}
