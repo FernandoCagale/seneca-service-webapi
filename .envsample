@@ -1,12 +1,6 @@
 SERVER_HOST=localhost
 SERVER_PORT=8000
 
-BD_HOST=localhost
-BD_USER=postgres
-BD_PORT=5432
-BD_PASSWORD=postgres
-BD_NAME=template
-
 JWT=secret
 
 PROXY_USER=
