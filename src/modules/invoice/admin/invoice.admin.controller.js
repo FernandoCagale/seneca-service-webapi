@@ -35,14 +35,14 @@ export const update = async (request, reply) => {
 export const destroy = async (request, reply) => {
   try {
     const id = request.params.id;
-    const pattern = {role: 'invoice', cmd: 'update', id: id};
+    const pattern = {role: 'invoice', cmd: 'remove', id: id};
 
     request.seneca.log.info('DELETE INVOICE', id);
 
     return request.seneca.act(pattern, (err, response) => {
       if (err) return reply.badImplementation(err);
       if (!response.ok) return reply.notFound(response.why);
-      return reply(response.invoice);
+      return reply();
     });
   } catch (err) {
     return reply.badImplementation(err);

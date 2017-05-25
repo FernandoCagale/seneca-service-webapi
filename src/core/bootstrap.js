@@ -50,7 +50,6 @@ function start (seneca) {
       if (err) {
         throw err;
       }
-
       console.log('info', 'Server running at: ' + server.info.uri);
     });
   })
