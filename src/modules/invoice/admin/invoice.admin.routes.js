@@ -1,5 +1,5 @@
-import * as Controller from './invoice.admin.controller';
-import * as Validator from './invoice.admin.validation';
+const Controller = require('./invoice.admin.controller');
+const Validator = require('./invoice.admin.validation');
 
 exports.register = (server, options, next) => {
   server.route([

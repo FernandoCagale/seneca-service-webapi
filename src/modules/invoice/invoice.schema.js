@@ -1,4 +1,10 @@
-import Joi from 'joi';
+'use strict';
+
+const Joi = require('joi');
+
+module.exports = {
+  getSchema: getSchema
+};
 
 const schema = {
   id: Joi
@@ -18,22 +24,6 @@ const schema = {
     .date()
 };
 
-const query = {
-  page: Joi
-    .number()
-    .integer()
-    .optional(),
-  limit: Joi
-    .number()
-    .integer()
-    .min(0)
-    .optional()
-};
-
-export function getSchema () {
+function getSchema () {
   return schema;
-}
-
-export function getQuery () {
-  return query;
 }

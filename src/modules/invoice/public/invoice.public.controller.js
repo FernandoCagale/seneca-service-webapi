@@ -1,4 +1,11 @@
-export const read = async (request, reply) => {
+'use strict';
+
+module.exports = {
+  list: list,
+  read: read
+};
+
+async function read (request, reply) {
   try {
     const pattern = {role: 'invoice', cmd: 'findById', id: request.params.id};
 
@@ -12,9 +19,9 @@ export const read = async (request, reply) => {
   } catch (err) {
     return reply.badImplementation(err);
   }
-};
+}
 
-export const list = async (request, reply) => {
+async function list (request, reply) {
   try {
     const pattern = {role: 'invoice', cmd: 'findAll'};
 
@@ -27,4 +34,4 @@ export const list = async (request, reply) => {
   } catch (err) {
     return reply.badImplementation(err);
   }
-};
+}
