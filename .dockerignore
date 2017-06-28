@@ -1,0 +1,8 @@
+node_modules
+.envsample
+.gitignore
+Dockerfile
+README.md
+LICENSE
+logs
+img
