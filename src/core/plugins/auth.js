@@ -1,5 +1,5 @@
-import jwt from 'hapi-auth-jwt2';
-import jsonWebToken from 'jsonwebtoken';
+const jwt = require('hapi-auth-jwt2');
+const jsonWebToken = require('jsonwebtoken');
 
 const key = process.env.JWT || 'template';
 

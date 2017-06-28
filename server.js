@@ -1,6 +1,3 @@
-require('babel-register');
-require('babel-polyfill');
-
 const Seneca = require('seneca');
 
 Seneca({tag: 'api'})

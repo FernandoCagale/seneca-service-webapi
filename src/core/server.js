@@ -1,4 +1,4 @@
-import Hapi from 'hapi';
+const Hapi = require('hapi');
 
 let server = new Hapi.Server();
 
@@ -17,4 +17,4 @@ server.connection({
   }
 });
 
-export default server;
+module.exports = server;
