@@ -1,8 +1,18 @@
-import * as Schema from '../user.schema';
+'use strict';
+
+const Schema = require('../user.schema');
 
 const schema = Schema.getSchema();
 
-export function read () {
+module.exports = {
+  create: create,
+  update: update,
+  read: read,
+  login: login,
+  logout: logout
+};
+
+function read () {
   return {
     params: {
       id: schema
@@ -12,11 +22,11 @@ export function read () {
   };
 }
 
-export function logout () {
+function logout () {
   return {};
 }
 
-export function login () {
+function login () {
   return {
     payload: {
       email: schema
@@ -29,7 +39,7 @@ export function login () {
   };
 }
 
-export function create () {
+function create () {
   return {
     payload: {
       name: schema
@@ -45,7 +55,7 @@ export function create () {
   };
 }
 
-export function update () {
+function update () {
   return {
     params: {
       id: schema

@@ -1,4 +1,10 @@
-import Joi from 'joi';
+'use strict';
+
+const Joi = require('joi');
+
+module.exports = {
+  getSchema: getSchema
+};
 
 const schema = {
   id: Joi
@@ -20,6 +26,6 @@ const schema = {
     .allow('')
 };
 
-export function getSchema () {
+function getSchema () {
   return schema;
 }

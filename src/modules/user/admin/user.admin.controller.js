@@ -1,6 +1,16 @@
-import jwt from 'jsonwebtoken';
+'use strict';
 
-export const create = async (request, reply) => {
+const jwt = require('jsonwebtoken');
+
+module.exports = {
+  create: create,
+  update: update,
+  read: read,
+  login: login,
+  logout: logout
+};
+
+async function create (request, reply) {
   try {
     const payload = request.payload;
     const pattern = {role: 'auth', cmd: 'create', email: payload.email, name: payload.name, password: payload.password};
@@ -14,9 +24,9 @@ export const create = async (request, reply) => {
   } catch (err) {
     return reply.badImplementation(err);
   }
-};
+}
 
-export const read = async (request, reply) => {
+async function read (request, reply) {
   try {
     const id = request.params.id;
     const pattern = {role: 'auth', cmd: 'findById', id: id};
@@ -30,9 +40,9 @@ export const read = async (request, reply) => {
   } catch (err) {
     return reply.badImplementation(err);
   }
-};
+}
 
-export const update = async (request, reply) => {
+async function update (request, reply) {
   try {
     const id = request.params.id;
     const payload = request.payload;
@@ -48,9 +58,9 @@ export const update = async (request, reply) => {
   } catch (err) {
     return reply.badImplementation(err);
   }
-};
+}
 
-export const login = async (request, reply) => {
+async function login (request, reply) {
   try {
     const payload = request.payload;
     const pattern = {role: 'auth', cmd: 'login', email: payload.email, password: payload.password};
@@ -74,9 +84,9 @@ export const login = async (request, reply) => {
   } catch (err) {
     return reply.badImplementation(err);
   }
-};
+}
 
-export const logout = async (request, reply) => {
+async function logout (request, reply) {
   try {
     const token = request.headers.authorization.replace('Bearer ', '');
     const pattern = {role: 'auth', cmd: 'logout', token: token};
@@ -90,7 +100,7 @@ export const logout = async (request, reply) => {
   } catch (err) {
     return reply.badImplementation(err);
   }
-};
+}
 
 function getToken (id) {
   const secretKey = process.env.JWT || 'template';
