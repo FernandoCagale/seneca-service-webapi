@@ -1,5 +1,5 @@
-import * as Controller from './order.public.controller';
-import * as Validator from './order.public.validation';
+const Controller = require('./order.public.controller');
+const Validator = require('./order.public.validation');
 
 exports.register = (server, options, next) => {
   server.route([

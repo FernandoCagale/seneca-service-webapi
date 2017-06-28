@@ -1,8 +1,16 @@
-import * as Schema from '../order.schema';
+'use strict';
+
+const Schema = require('../order.schema');
 
 const schema = Schema.getSchema();
 
-export function destroy () {
+module.exports = {
+  destroy: destroy,
+  create: create,
+  update: update
+};
+
+function destroy () {
   return {
     params: {
       id: schema
@@ -12,7 +20,7 @@ export function destroy () {
   };
 }
 
-export function create () {
+function create () {
   return {
     payload: {
       client: schema
@@ -28,7 +36,7 @@ export function create () {
   };
 }
 
-export function update () {
+function update () {
   return {
     params: {
       id: schema

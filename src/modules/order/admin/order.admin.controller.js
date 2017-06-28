@@ -1,4 +1,12 @@
-export const create = async (request, reply) => {
+'use strict';
+
+module.exports = {
+  destroy: destroy,
+  create: create,
+  update: update
+};
+
+async function create (request, reply) {
   try {
     const payload = request.payload;
     const pattern = {role: 'order', cmd: 'create', emission: payload.emission, price: payload.price, client: payload.client};
@@ -12,9 +20,9 @@ export const create = async (request, reply) => {
   } catch (err) {
     return reply.badImplementation(err);
   }
-};
+}
 
-export const update = async (request, reply) => {
+async function update (request, reply) {
   try {
     const id = request.params.id;
     const payload = request.payload;
@@ -30,9 +38,9 @@ export const update = async (request, reply) => {
   } catch (err) {
     return reply.badImplementation(err);
   }
-};
+}
 
-export const destroy = async (request, reply) => {
+async function destroy (request, reply) {
   try {
     const id = request.params.id;
     const pattern = {role: 'order', cmd: 'remove', id: id};
@@ -47,4 +55,4 @@ export const destroy = async (request, reply) => {
   } catch (err) {
     return reply.badImplementation(err);
   }
-};
+}

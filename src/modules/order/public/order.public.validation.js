@@ -1,12 +1,19 @@
-import * as Schema from '../order.schema';
+'use strict';
+
+const Schema = require('../order.schema');
 
 const schema = Schema.getSchema();
 
-export function list () {
+module.exports = {
+  list: list,
+  read: read
+};
+
+function list () {
   return {};
 }
 
-export function read () {
+function read () {
   return {
     params: {
       id: schema
