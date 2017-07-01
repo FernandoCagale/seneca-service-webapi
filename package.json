@@ -34,6 +34,9 @@
     "lodash": "4.15.0",
     "rotating-file-stream": "^1.0.5",
     "seneca": "^3.3.0",
+    "seneca-balance-client": "^0.6.1",
+    "seneca-consul-registry": "^0.1.0",
+    "seneca-mesh": "^0.10.0",
     "vision": "^4.1.0"
   }
 }
