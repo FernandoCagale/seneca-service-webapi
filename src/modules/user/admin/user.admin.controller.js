@@ -1,7 +1,5 @@
 'use strict';
 
-const jwt = require('jsonwebtoken');
-
 module.exports = {
   create: create,
   update: update,
