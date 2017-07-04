@@ -19,7 +19,7 @@ async function create (request, reply) {
 
     return request.seneca.act(pattern, (err, response) => {
       if (err) return reply.badImplementation(err);
-      return reply(response.auth);
+      return reply({token: response.token});
     });
   } catch (err) {
     return reply.badImplementation(err);
@@ -35,7 +35,8 @@ async function read (request, reply) {
 
     return request.seneca.act(pattern, (err, response) => {
       if (err) return reply.badImplementation(err);
-      return reply(response.auth);
+      if (!response.ok) return reply.badRequest(response.why);
+      return reply({token: response.token});
     });
   } catch (err) {
     return reply.badImplementation(err);
@@ -70,16 +71,7 @@ async function login (request, reply) {
     return request.seneca.act(pattern, (err, response) => {
       if (err) return reply.badImplementation(err);
       if (!response.ok) return reply.badRequest(response.why);
-      const auth = response.auth;
-      const token = getToken(auth.id);
-
-      request.seneca.log.info('ADD CACHE', token);
-
-      const patternCache = {role: 'auth', cmd: 'setToken', token: token, id: auth.id};
-      request.seneca.act(patternCache, (err, response) => {
-        if (err) return reply.badImplementation(err);
-        return reply({token: token});
-      });
+      return reply({token: response.token});
     });
   } catch (err) {
     return reply.badImplementation(err);
@@ -100,13 +92,4 @@ async function logout (request, reply) {
   } catch (err) {
     return reply.badImplementation(err);
   }
-}
-
-function getToken (id) {
-  const secretKey = process.env.JWT || 'template';
-
-  return jwt.sign({
-    id: id,
-    scope: ['admin']
-  }, secretKey, {expiresIn: '2h'});
 }

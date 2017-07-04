@@ -1,5 +1,4 @@
 const jwt = require('hapi-auth-jwt2');
-const jsonWebToken = require('jsonwebtoken');
 
 const key = process.env.JWT || 'template';
 
@@ -25,16 +24,11 @@ exports.register = (server, options, next) => {
 
   function validate (decoded, request, cb) {
     const token = request.headers.authorization.replace('Bearer ', '');
-    const pattern = {role: 'auth', cmd: 'getToken', token: token};
+    const pattern = {role: 'auth', cmd: 'verify', token: token};
 
     return request.seneca.act(pattern, (err, response) => {
       if (err || !response.ok) return cb(null, false);
-      jsonWebToken.verify(token, key, (err, decoded) => {
-        if (err) {
-          return cb(null, false);
-        }
-        return cb(null, true);
-      });
+      return cb(null, true);
     });
   }
 };
