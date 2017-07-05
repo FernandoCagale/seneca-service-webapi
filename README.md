@@ -45,6 +45,8 @@ $ npm start
 
 `http://localhost:3000/documentation`
 
+![alt tag](https://github.com/FernandoCagale/seneca-service-webapi/blob/master/img/DocumentationAPI.png)
+
 [travis-badge-auth]: https://travis-ci.org/FernandoCagale/seneca-service-auth.svg?branch=master
 [travis-url-auth]: https://travis-ci.org/FernandoCagale/seneca-service-auth
 
