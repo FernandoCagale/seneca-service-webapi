@@ -7,7 +7,7 @@ exports.register = (server, options, next) => {
   server.route([
     {
       method: 'DELETE',
-      path: '/admin/order/{id}',
+      path: '/order/{id}',
       config: {
         description: 'DELETE order',
         notes: 'DELETE order',
@@ -21,7 +21,7 @@ exports.register = (server, options, next) => {
     },
     {
       method: 'PUT',
-      path: '/admin/order/{id}',
+      path: '/order/{id}',
       config: {
         description: 'PUT order',
         notes: 'PUT order',
@@ -35,7 +35,7 @@ exports.register = (server, options, next) => {
     },
     {
       method: 'POST',
-      path: '/admin/order',
+      path: '/order',
       config: {
         description: 'POST order',
         notes: 'POST order',

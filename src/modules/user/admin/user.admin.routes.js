@@ -7,7 +7,7 @@ exports.register = (server, options, next) => {
   server.route([
     {
       method: 'GET',
-      path: '/admin/user/{id}',
+      path: '/user',
       config: {
         description: 'GET user',
         notes: 'Return based on token',
@@ -21,7 +21,7 @@ exports.register = (server, options, next) => {
     },
     {
       method: 'POST',
-      path: '/admin/user',
+      path: '/user',
       config: {
         description: 'POST user',
         notes: 'Save a user',
@@ -33,7 +33,7 @@ exports.register = (server, options, next) => {
     },
     {
       method: 'POST',
-      path: '/admin/user/logout',
+      path: '/user/logout',
       config: {
         description: 'POST user logout',
         notes: 'Logout a user',
@@ -47,7 +47,7 @@ exports.register = (server, options, next) => {
     },
     {
       method: 'PUT',
-      path: '/admin/user/{id}',
+      path: '/user',
       config: {
         description: 'PUT user',
         notes: 'Update based on token',
@@ -61,7 +61,7 @@ exports.register = (server, options, next) => {
     },
     {
       method: 'POST',
-      path: '/admin/user/login',
+      path: '/user/login',
       config: {
         description: 'POST user',
         notes: 'User login to the token generation',

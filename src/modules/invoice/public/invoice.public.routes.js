@@ -5,11 +5,11 @@ exports.register = (server, options, next) => {
   server.route([
     {
       method: 'GET',
-      path: '/public/invoice/{id}',
+      path: '/invoice/{id}',
       config: {
         description: 'GET invoice',
         notes: 'GET id invoice',
-        tags: ['api', 'public'],
+        tags: ['api', 'invoice'],
         auth: false,
         handler: Controller.read,
         validate: Validator.read()
@@ -17,11 +17,11 @@ exports.register = (server, options, next) => {
     },
     {
       method: 'GET',
-      path: '/public/invoice',
+      path: '/invoice',
       config: {
         description: 'GET invoice',
         notes: 'GET invoice',
-        tags: ['api', 'public'],
+        tags: ['api', 'invoice'],
         auth: false,
         handler: Controller.list,
         validate: Validator.list()

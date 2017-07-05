@@ -5,11 +5,11 @@ exports.register = (server, options, next) => {
   server.route([
     {
       method: 'DELETE',
-      path: '/admin/invoice/{id}',
+      path: '/invoice/{id}',
       config: {
         description: 'DELETE invoice',
         notes: 'DELETE invoice',
-        tags: ['api', 'admin'],
+        tags: ['api', 'invoice'],
         auth: {
           scope: ['admin']
         },
@@ -19,11 +19,11 @@ exports.register = (server, options, next) => {
     },
     {
       method: 'PUT',
-      path: '/admin/invoice/{id}',
+      path: '/invoice/{id}',
       config: {
         description: 'PUT invoice',
         notes: 'PUT invoice',
-        tags: ['api', 'admin'],
+        tags: ['api', 'invoice'],
         auth: {
           scope: ['admin']
         },
@@ -33,11 +33,11 @@ exports.register = (server, options, next) => {
     },
     {
       method: 'POST',
-      path: '/admin/invoice',
+      path: '/invoice',
       config: {
         description: 'POST invoice',
         notes: 'POST invoice',
-        tags: ['api', 'admin'],
+        tags: ['api', 'invoice'],
         auth: {
           scope: ['admin']
         },

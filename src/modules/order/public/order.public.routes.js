@@ -5,7 +5,7 @@ exports.register = (server, options, next) => {
   server.route([
     {
       method: 'GET',
-      path: '/public/order/{id}',
+      path: '/order/{id}',
       config: {
         description: 'GET order',
         notes: 'GET id order',
@@ -17,7 +17,7 @@ exports.register = (server, options, next) => {
     },
     {
       method: 'GET',
-      path: '/public/order',
+      path: '/order',
       config: {
         description: 'GET order',
         notes: 'GET order',

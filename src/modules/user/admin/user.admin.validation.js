@@ -13,13 +13,7 @@ module.exports = {
 };
 
 function read () {
-  return {
-    params: {
-      id: schema
-        .id
-        .required()
-    }
-  };
+  return {};
 }
 
 function logout () {
@@ -57,11 +51,6 @@ function create () {
 
 function update () {
   return {
-    params: {
-      id: schema
-        .id
-        .required()
-    },
     payload: {
       name: schema
         .name

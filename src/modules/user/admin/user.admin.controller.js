@@ -26,10 +26,10 @@ async function create (request, reply) {
 
 async function read (request, reply) {
   try {
-    const id = request.params.id;
-    const pattern = {role: 'auth', cmd: 'findById', id: id};
+    const token = request.headers.authorization.replace('Bearer ', '');
+    const pattern = {role: 'auth', cmd: 'findById', token: token};
 
-    request.seneca.log.info('GET AUTH ID', id);
+    request.seneca.log.info('GET AUTH ID', token);
 
     return request.seneca.act(pattern, (err, response) => {
       if (err) return reply.badImplementation(err);
@@ -43,9 +43,9 @@ async function read (request, reply) {
 
 async function update (request, reply) {
   try {
-    const id = request.params.id;
+    const token = request.headers.authorization.replace('Bearer ', '');
     const payload = request.payload;
-    const pattern = {role: 'auth', cmd: 'update', id: id, email: payload.email, name: payload.name, password: payload.password};
+    const pattern = {role: 'auth', cmd: 'update', token: token, email: payload.email, name: payload.name, password: payload.password};
 
     request.seneca.log.info('PUT AUTH', payload);
 
