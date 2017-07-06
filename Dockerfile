@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:8.1.2
+FROM mhart/alpine-node:8.1.0
 
 RUN apk add --update \
     make \
