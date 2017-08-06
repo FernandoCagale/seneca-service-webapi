@@ -2,6 +2,39 @@
 
 [![js-semistandard-style](https://cdn.rawgit.com/flet/semistandard/master/badge.svg)](https://github.com/Flet/semistandard)
 
+Implementation of a micro-service prototype
+
+- Nodejs
+  - senecajs
+  - hapijs
+- JWT
+- Swagger
+- MongoDB
+- Redis
+- Rabbitmq
+- API Gateway
+- Nginx
+- Consul
+- Docker
+- TDD
+- Gitlab-CI
+- Digital Ocean
+
+* **Auth** Service responsible for authentication of services
+* **Order** Service responsible for all requirements related to an Order
+  * When an Order is generated, it is necessary to launch an Invoice for the registered order, this process is done by queue (rabbitmq). That adds in the queue the information of the registered order.
+
+* **Invoice** Service responsible for all requirements related to an Invoice
+  * Consume the queue (rabbitmq) of Orders that are registered to start the Invoice
+
+All the above services are with tests implemented and the environment configured to run using docker.
+
+* **Webapi** Service (API Gateway), reponsible for providing the services described above, with their proper permissions.
+
+Environment configured for testing and deploy with docker in gitlab through Makefile and a simple deploy Digital Ocean.
+
+Flow:
+
 ![alt tag](https://github.com/FernandoCagale/seneca-service-webapi/blob/master/img/WebAPI.png)
 
 ```sh
